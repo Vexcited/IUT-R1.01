@@ -1,0 +1,151 @@
+# Affiche un livre de façon simple à visualiser.
+# Entrée : le livre à afficher
+procédure afficherLivre ( ; livre : Livre)
+début
+  afficher livre.titre, " (", livre.pages, " pages) par ", livre.auteur, " parut en ", livre.annee
+fin afficherLivre
+
+# Affiche tout les livres dans la bibliothèque.
+# Entrée : la bibliothèque et sa longueur
+procédure afficherLivres ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec i : entier
+
+  pour i de 0 à longueur - 1 faire
+    afficherLivre(; biblio[i])
+    afficher "----------------------------------"
+  fin faire
+fin afficherLivres
+
+# Ajoute un livre dans la bibliothèque
+# Entrée : la bibliothèque et sa longueur
+procédure ajouterLivre ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec nouveau_livre : Livre
+
+  si longueur < 255 alors
+    afficher "Nom du livre: "
+    saisir nouveau_livre.titre
+    afficher "Auteur du livre: "
+    saisir nouveau_livre.auteur
+    afficher "Année: "
+    saisir nouveau_livre.annee
+    afficher "Pages: "
+    saisir nouveau_livre.pages
+      
+    biblio[longueur] <- nouveau_livre
+    longueur <- longueur + 1
+
+    afficher "Livre ajouté"
+    afficherLivre( ; nouveau_livre)
+  sinon
+    afficher "Limite de livres atteinte."
+  fin si
+fin ajouterLivre
+
+# Recherche un livre dans la bibliothèque.
+# Entrée : la bibliothèque et sa longueur
+# Sortie : Index du livre qu'on recherche ou `-1` si le livre n'est pas trouvé.
+fonction récupérerLivreDepuisNom ( ; biblio[255] : Livre, longueur : entier) retourne entier
+début
+  avec nom_livre   : chaine
+       i           : entier
+       index_livre : entier
+  
+  afficher "Entrer le nom du livre: "
+  saisir nom_livre
+
+  index_livre <- -1
+
+  pour i de 0 à longueur - 1 faire
+    si biblio[i].titre = nom_livre alors
+      index_livre <- i
+      en_cours <- faux
+    fin si
+  fin faire
+  
+  retourne index_livre
+fin récupérerLivreDepuisNom
+
+# Recherche un livre depuis son nom et l'affiche.
+# Entrée : la bibliothèque et sa longueur
+procédure rechercherLivre ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec index_livre : entier
+
+  index_livre <- récupérerLivreDepuisNom( ; biblio, longueur)
+  afficherLivre( ; biblio[index_livre])
+fin rechercherLivre
+
+# Supprime un livre en fonction de son nom.
+# Entrée : la bibliothèque et sa longueur
+procédure supprimerLivre ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec index_livre : entier
+                 i : entier
+
+  index_livre <- récupérerLivreDepuisNom( ; biblio[255] : Livre, longueur : entier)
+  pour i de index_livre à longueur - 2 faire
+    biblio[i] <- biblio[i + 1]
+  fin faire
+
+  longueur <- longueur - 1
+fin supprimerLivre
+
+# Vérifie si la bibliothèque est un ensemble
+# Entrée : la bibliothèque et sa longueur
+procédure vérificationBiblioEnsemble ( ; biblio[255] : Livre, longueur : entier)
+début
+  avec        i, j : entier
+       estEnsemble : booléen
+
+  estEnsemble <- vrai
+
+  pour i de 0 à longueur - 1 faire
+    pour j de i à longueur - 1 faire
+      si (biblio[j].titre = biblio[i].titre) et (biblio[j].auteur = biblio[i].auteur) et (biblio[j].annee = biblio[i].annee) et (biblio[j].pages = biblio[i].pages) alors
+        estEnsemble <- faux
+      fin si
+    fin faire
+  fin faire
+
+  si estEnsemble alors
+    afficher "la bibliothèque est un ensemble"
+  sinon
+    afficher "la bibliothèque n'est pas un ensemble"
+  fin si 
+fin vérificationBiblioEnsemble
+
+programme bibliothéque
+début
+  avec type Livre = {
+        titre: chaine
+        auteur: chaine
+        annee: entier
+        pages: entier
+      }
+      biblio[255] : Livre
+      longueur    : entier
+      choix       : entier
+
+  choix <- -1
+  longueur <- 0
+
+  tant que choix != 5 faire
+    afficher "1. Afficher l'ensemble des livres de la bibliothèque"
+    afficher "2. Ajouter un nouveau livre"
+    afficher "3. Rechercher un livre (par le titre)
+    afficher "4. Supprimer un livre"
+    afficher "5. Quitter"
+
+    afficher "Choix: "
+    saisir choix
+
+    selon choix faire
+      cas 1 : afficherLivres( ; biblio, longueur)
+      cas 2 : ajouterLivre( ; biblio, longueur)
+      cas 3 : rechercherLivre( ; biblio, longueur)
+      cas 4 : supprimerLivre( ; biblio, longueur)
+      cas 5 : vérificationBiblioEnsemble( ; biblio, longueur)
+    fin faire
+fin programme

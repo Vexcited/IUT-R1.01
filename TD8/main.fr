@@ -1,0 +1,84 @@
+# PPC
+procédure afficherLivre ( ; livre : Livre)
+début
+  afficher livre.titre, " (", livre.pages, " pages) par ", livre.auteur, " parut en ", livre.annee
+fin afficherLivre
+
+# PPC
+procédure afficherLivres ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec i : entier
+
+  pour i de 0 à longueur - 1 faire
+    afficherLivre(; biblio[i])
+    afficher "----------------------------------"
+  fin faire
+fin afficherLivres
+
+# PPC
+procédure ajouterLivre ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec nouveau_livre : Livre
+  
+  afficher "Nom du livre: "
+  saisir nouveau_livre.titre
+  afficher "Auteur du livre: "
+  saisir nouveau_livre.auteur
+  afficher "Année: "
+  saisir nouveau_livre.annee
+  afficher "Pages: "
+  saisir nouveau_livre.pages
+    
+  biblio[longueur] <- nouveau_livre
+  longueur <- longueur + 1
+
+  afficher "Livre ajouté"
+  afficherLivre( ; nouveau_livre)
+fin ajouterLivre
+
+# PPC
+procédure rechercherLivre ( ; biblio[255] : Livre, longueur : entier )
+début
+  avec nom_livre : chaîne
+       i         : entier
+
+  afficher "Rechercher le livre: "
+  saisir nom_livre
+
+  pour i de 0 à longueur - 1 faire
+    si biblio[i].titre = nom_livre alors
+      afficherLivre( ; biblio[i])
+    fin si
+  fin faire
+fin rechercherLivre
+
+programme bibliothèque
+début
+  avec type Livre = {
+    titre: chaîne
+    auteur: chaîne
+    annee: entier
+    pages: entier
+  }
+       biblio[255] : Livre
+       longueur    : entier
+       choix       : entier
+
+  choix <- -1
+  longueur <- 0
+
+  tant que choix != 4 faire
+    afficher "1. Afficher l'ensemble des livres de la bibliothèque"
+    afficher "2. Ajouter un nouveau livre"
+    afficher "3. Rechercher un livre (par le titre)
+    afficher "4. Quitter"
+
+    afficher "Choix: "
+    saisir choix
+
+    selon choix faire
+      cas 1 : afficherLivres( ; biblio, longueur)
+      cas 2 : ajouterLivre( ; biblio, longueur)
+      cas 3 : rechercherLivre( ; biblio, longueur)
+    fin faire
+fin bibliothèque
