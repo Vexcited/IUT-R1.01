@@ -1,0 +1,70 @@
+# Structure de données.
+type Maillon = {
+  v: entier
+  suivant: Maillon
+  précédent: Maillon
+}
+
+type ListeDouble = {
+  tête: Maillon
+}
+
+# 1. Ajout un élément en queue.
+procédure adj_queue (v: entier ; p: ListeDouble)
+début
+  avec np : Maillon
+
+  si p.tête = null alors
+    adj_tête(v, p) # On part du principe que nous avons déjà la procédure `adj_tête`.
+  sinon
+    np <- p.tête
+    tant que np.suivant != nul faire
+      np <- np.suivant
+    fin faire
+
+    np.suivant <- Maillon()
+    np.suivant.v <- v
+    np.suivant.suivant <- null
+    np.suivant.précédent <- np
+  fin si
+fin adj_queue
+
+# 2. Suppression d'un élément en tête.
+procédure supp_tête (; p: ListeDouble)
+début
+  avec np: Maillon
+
+  si p.tête != null alors
+    si p.tête.suivant != null alors
+      np <- p.tête
+      p.tête <- p.tête.suivant
+      détruire np
+      p.tête.precedent <- null
+    # on a qu'un seul Maillon dans la liste
+    sinon
+      détruire p.tête
+      p.tête <- null
+    fin si
+  fin si
+fin supp_tête
+
+# 3. Suppression d'un élément en queue.
+procédure supp_queue (; p: ListeDouble)
+début
+  avec np: Maillon
+
+  si p.tête != null alors
+    si p.tête.suivant = null alors
+      détruire p.tête
+      p.tête <- null
+    sinon
+      np <- p.tête
+      tant que np.suivant.suivant != null faire
+        np <- np.suivant
+      fin faire
+
+      détruire np.suivant
+      np.suivant <- null
+    fin si
+  fin si
+fin supp_queue
