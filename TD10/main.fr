@@ -1,0 +1,46 @@
+programme Interpréteur
+début
+  attend_chaîne : booléen
+  char_actuel   : caractère
+  nb_répétition : entier
+  répétition_chaîne : chaîne
+  f             : fichier texte
+
+  répétition_chaîne <- ""
+  attend_chaîne     <- faux
+  f                 <- ouvrir("texte.txt", lecture)
+  
+  tant que non fdf(f) faire
+    lire(f, char_actuel)
+
+    si char_actuel = '/' alors
+      si attend_chaîne alors
+        pour _ de 1 à nb_répétition faire
+          afficher répétition_chaîne
+        fin faire
+
+        attend_chaîne <- faux
+        répétition_chaîne <- ""
+      sinon
+        lire(f, nb_répétition) # entier
+        lire(f, char_actuel) # doit être / ou n
+        
+        si char_actuel = 'n' alors
+          pour _ de 1 à nb_répétition faire
+            afficher '\n'
+          fin faire
+        sinon
+          si char_actuel = '/' alors
+            attend_chaîne <- vrai
+          fin si
+        fin si
+      fin si
+    sinon
+      si attend_chaîne = vrai alors
+        répétition_chaîne <- répétition_chaîne + char_actuel
+      fin si
+    fin si
+
+  fin faire
+
+fin Interpréteur
