@@ -1,0 +1,16 @@
+[package]
+name = "r1-01"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "tp1"
+path = "TP1/first.rs"
+
+[[bin]]
+name = "tp2-ex2"
+path = "TP2/ex2.rs"
+
+[dependencies]
