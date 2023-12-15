@@ -1,13 +1,6 @@
 # python cache
 __pycache__
 
-# rust, c and zig binaries
-first
-main
-ex1
-ex2
-ex3
-ex4
-
-# rust specific
-target
+# compiled binaries
+*.o
+*_bin
