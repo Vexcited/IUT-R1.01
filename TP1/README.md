@@ -2,17 +2,15 @@
 
 ## Table of contents
 
-- [TP1 - R1.01 - Introduction to Python](#tp1---r101---introduction-to-python)
-  - [Table of contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Choice of IDE](#choice-of-ide)
-  - [Installation](#installation)
-    - [Visual Studio Code](#visual-studio-code)
-    - [Python](#python)
-    - [Python plugin for Visual Studio Code](#python-plugin-for-visual-studio-code)
-    - [Git (optional)](#git-optional)
-  - [Settings](#settings)
-  - [Write our first program : `./first.py`](#write-our-first-program--firstpy)
+- [Introduction](#introduction)
+- [Choice of IDE](#choice-of-ide)
+- [Installation](#installation)
+  - [Visual Studio Code](#visual-studio-code)
+  - [Python](#python)
+  - [Python plugin for Visual Studio Code](#python-plugin-for-visual-studio-code)
+  - [Git (optional)](#git-optional)
+- [Settings](#settings)
+- [Write our first program : `./first.py`](#write-our-first-program--firstpy)
 
 ## Introduction
 
