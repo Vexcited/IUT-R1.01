@@ -1,0 +1,20 @@
+programme vérification_date
+début
+  avec
+    jour, mois, année : entier
+
+    afficher "jour = "
+    saisir jour
+    afficher "mois = "
+    saisir mois
+    afficher "année = "
+    saisir année
+
+    si VérifierDate(jour, mois, année) alors
+      afficher "date valide"
+    sinon
+      afficher "date non valide"
+    fin si
+
+    afficher "\n" # à la ligne
+fin vérification_date
