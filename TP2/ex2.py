@@ -9,10 +9,10 @@ if __name__ == "__main__":
 
   print("\nResult : ", end="")
 
-  if n1 > n2:
-    print(f"{n1} > {n2}")
-  elif n1 == n2:
-    print(f"{n1} = {n2}")
+  if (n1 == n2):
+        print(n1, "=", n2)
   else:
-    print(f"{n1} < {n2}")
-  
+      if (n1 < n2):
+          print(n1, "<", n2)
+      else:
+          print(n1, ">", n2)
