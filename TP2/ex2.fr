@@ -1,0 +1,23 @@
+programme comparaison
+début
+  avec
+    max    : entier
+    n1, n2 : entier
+
+  afficher "n1 = "
+  saisir n1
+  afficher "n2 = "
+  saisir n2
+
+  si n1 = n2 alors
+    afficher n1, "=", n2
+  sinon
+    si n1 > n2 alors
+      afficher n1, ">", n2
+    sinon
+      afficher n1, "<", n2
+    fin si
+  fin si
+  
+  afficher "\n" # à la ligne
+fin comparaison

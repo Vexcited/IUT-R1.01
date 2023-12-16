@@ -1,0 +1,14 @@
+programme carrelage
+début
+  avec
+    L, H, l, h, e, n : entier
+
+  saisir L # largeur surface
+  saisir H # hauteur surface
+  saisir l # largeur carreau
+  saisir h # hauteur carreau
+  saisir e # espace entre carreaux
+
+  n <- ((L - e) / (l + e)) + 1 * ((H - e) / (h + e)) + 1
+  afficher "Il faut", n, "carreaux pour recouvrir la surface.\n"
+fin carrelage

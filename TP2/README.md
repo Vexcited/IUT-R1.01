@@ -16,7 +16,7 @@ Write a program that allows to enter two integers, then to display them with the
 - [x] [Python 3](./ex2.py)
 - [x] [Rust](./ex2.rs)
 - [x] [Zig](./ex2.zig)
-- [ ] `frr`
+- [x] [`frr`](./ex2.fr)
 - [ ] C
 
 ## TD1 - Exercice 3: A small mathematical problem
@@ -34,5 +34,5 @@ We will also assume that `L>l+2*e` and `H>h+2*e`, and that `L-e` is not a multip
 - [x] [Python 3](./ex3.py)
 - [ ] Rust
 - [ ] Zig
-- [ ] `frr`
+- [x] [`frr`](./ex3.fr)
 - [ ] C
