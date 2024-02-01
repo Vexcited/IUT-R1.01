@@ -1,0 +1,4 @@
+fonction nb_parfaits (n : entier) retourne chaîne
+début
+
+fin nb_parfaits
